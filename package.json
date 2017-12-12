@@ -18,5 +18,9 @@
   "dependencies": {
     "@types/lodash": "^4.14.88",
     "lodash": "^4.17.4"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ruanmartinelli/knex-model.git"
   }
 }
