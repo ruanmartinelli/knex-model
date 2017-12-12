@@ -1,5 +1,5 @@
 {
-  "name": "knex-model",
+  "name": "@ruanmartinelli/knex-model",
   "version": "0.0.1",
   "main": "dist/index.js",
   "author": "Ruan Martinelli",
