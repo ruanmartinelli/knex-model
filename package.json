@@ -1,0 +1,22 @@
+{
+  "name": "knex-model",
+  "version": "0.0.1",
+  "main": "dist/index.js",
+  "author": "Ruan Martinelli",
+  "license": "MIT",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "test": "npm run build && ava test/index.js --verbose"
+  },
+  "devDependencies": {
+    "@types/node": "^8.0.57",
+    "ava": "^0.24.0",
+    "mysql": "^2.15.0",
+    "knex": "^0.14.2"
+  },
+  "dependencies": {
+    "@types/lodash": "^4.14.88",
+    "lodash": "^4.17.4"
+  }
+}
