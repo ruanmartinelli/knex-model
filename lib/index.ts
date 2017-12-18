@@ -15,6 +15,7 @@ export default class Model {
   columns?: Array<string>
   joins?: Array<any>
   idAttribute?: string
+  customFilters: Array<Function>
 
   // Hooks
   beforeInsert?: Function
@@ -38,6 +39,7 @@ export default class Model {
     this.columns = opts.columns || []
     this.joins = opts.joins || []
     this.idAttribute = opts.idAttribute || 'id'
+    this.customFilters = opts.customFilters || {}
 
     this.beforeInsert = opts.beforeInsert || noop
     this.afterInsert = opts.afterInsert || noop
@@ -73,17 +75,17 @@ export default class Model {
       }
     })
 
-    const filterFunctions: Array<Function> = []
+    const filterPromises: Array<Promise<any>> = []
 
     mapKeys(filter, (value, key: string) => {
-      if (isFunction(value)) {
-        filterFunctions.push(value)
+      if (isFunction(this.customFilters[key])) {
+        filterPromises.push(Promise.resolve(this.customFilters[key](value, query)))
       } else {
         query.where(`${this.tableName}.${key}`, value)
       }
     })
 
-    await Promise.all(filterFunctions.map(fn => fn(query)))
+    await Promise.all(filterPromises)
 
     return query
   }

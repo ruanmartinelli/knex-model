@@ -99,15 +99,19 @@ test('should work with filter functions', async t => {
   const User = new UserModel({
     tableName: 'user',
     connection: conn,
-    joins: [{ table: 'post', first: 'post.id', second: 'user.post_id' }]
+    columns: [`user.*`, `post.id as post_id`],
+    joins: [{ table: 'post', first: 'post.id', second: 'user.post_id' }],
+    customFilters: {
+      postId: (value, query) => query.where('post.id', value)
+    }
   })
 
   const users = await User.find({
-    id: 1,
-    isJohn: query => query.where('name', 'John')
+    postId: 1
   })
 
-  t.deepEqual(users[0].name, 'John')
+  t.is(users.length, users.filter(u => u.post_id === 1).length)
+  t.deepEqual(users[0].post_id, 1)
 })
 
 test('insert() works', async t => {
