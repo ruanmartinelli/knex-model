@@ -2,7 +2,7 @@ import Model from '../dist'
 import conn from './database'
 
 import test from 'ava'
-import { isNumber, isArray, isNil } from 'lodash'
+import { isNumber, isArray, isNil, isString } from 'lodash'
 
 /**
  * Setup
@@ -199,6 +199,11 @@ test('should be able to create custom functions', async t => {
     findByTitle(title) {
       return this.find({ title })
     }
+
+    async customCount() {
+      const [count] = await this.knex('post').count(`id as num`)
+      return `Total: ${count.num}`
+    }
   }
 
   const Post = new PostModel({
@@ -207,7 +212,9 @@ test('should be able to create custom functions', async t => {
   })
 
   const posts = await Post.findByTitle('Some cool title')
+  const countMessage = await Post.customCount()
 
+  t.true(isString(countMessage))
   t.true(isArray(posts))
   t.deepEqual(posts[0].title, 'Some cool title')
 })
