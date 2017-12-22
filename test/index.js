@@ -1,8 +1,8 @@
 import Model from '../dist'
 import conn from './database'
-
+import v4 from 'uuid/v4'
 import test from 'ava'
-import { isNumber, isArray, isNil, isString } from 'lodash'
+import { isNumber, isArray, isNil, isString, uniqueId } from 'lodash'
 
 /**
  * Setup
@@ -55,6 +55,24 @@ test(`find() works`, async t => {
 
   t.true(isArray(users))
   t.true(users[0].id === 1)
+})
+
+test(`should group rows when passing groupBy options`, async t => {
+  const User = new UserModel({
+    tableName: 'user',
+    connection: conn,
+    groupBy: ['user.name']
+  })
+
+  const unique = v4()
+  const user = { name: unique, post_id: 1 }
+
+  await Promise.all([User.insert(user), User.insert(user), User.insert(user)])
+
+  const users = await User.find({ name: unique })
+
+  t.true(isArray(users))
+  t.true(users.length === 1)
 })
 
 test('only fetch declared columns', async t => {

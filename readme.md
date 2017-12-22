@@ -116,6 +116,12 @@ Type: `object`
 
 An object with custom filter functions that can be used in the `.find()` method. See more on the full example below.
 
+#### options.groupBy
+
+Type: `Array<string>`
+
+An array with the columns to group by.
+
 ### Hooks
 
 The following hooks are supported:
@@ -182,6 +188,9 @@ Function that will be called with the argument received by the `.update()` or `.
       query.where('main_character.name', value)
     }
   },
+
+  // Columns to group by in query
+  groupBy: ['book.id']
 
   // Hooks are called with the values passed to the .insert() and .update() methods.
   // You can use them to validate your objects, for example:

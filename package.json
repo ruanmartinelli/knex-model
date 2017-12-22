@@ -12,8 +12,9 @@
   "devDependencies": {
     "@types/node": "^8.0.57",
     "ava": "^0.24.0",
+    "knex": "^0.14.2",
     "mysql": "^2.15.0",
-    "knex": "^0.14.2"
+    "uuid": "^3.1.0"
   },
   "dependencies": {
     "@types/lodash": "^4.14.88",

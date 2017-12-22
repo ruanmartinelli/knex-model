@@ -1,5 +1,6 @@
 import {
   isString,
+  isArray,
   isFunction,
   head,
   isEmpty,
@@ -16,6 +17,7 @@ export default class Model {
   joins?: Array<any>
   idAttribute?: string
   customFilters: Array<Function>
+  groupBy: Array<string>
 
   // Hooks
   beforeInsert?: Function
@@ -40,6 +42,7 @@ export default class Model {
     this.joins = opts.joins || []
     this.idAttribute = opts.idAttribute || 'id'
     this.customFilters = opts.customFilters || {}
+    this.groupBy = opts.groupBy || null
 
     this.beforeInsert = opts.beforeInsert || noop
     this.afterInsert = opts.afterInsert || noop
@@ -86,6 +89,10 @@ export default class Model {
     })
 
     await Promise.all(filterPromises)
+
+    if(isArray(this.groupBy)){
+      query.groupBy(this.groupBy)
+    }
 
     return query
   }
