@@ -60,7 +60,7 @@ export default class Model {
     if (isEmpty(this.columns)) {
       columns.push(`${this.tableName}.*`)
     } else {
-      this.columns.forEach(col => columns.push(`${col}`))
+      this.columns.forEach(col => columns.push(col))
     }
 
     query.select(columns)
