@@ -19,7 +19,7 @@ yarn add @ruanmartinelli/knex-model
 
 ## Usage
 
-Assuming you already have Knex configured, it's fairly simple to setup everything up:
+Assuming you already have Knex configured, it's fairly simple to set everything up:
 
 ```js
 import conn from './database' // Your knex connection
