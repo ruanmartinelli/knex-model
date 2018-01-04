@@ -20,6 +20,11 @@ npm i --save @ruanmartinelli/knex-model
 yarn add @ruanmartinelli/knex-model
 ```
 
+## Roadmap
+
+- [ ] Default `$limit` and `$offset` attributes in filter of `.find()` method
+- [ ] _camelCase_ & _snake_case_ support
+
 ## Usage
 
 Assuming you already have Knex configured, it's fairly simple to set everything up:
