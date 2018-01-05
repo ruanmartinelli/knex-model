@@ -1,5 +1,8 @@
 # :package: knex-model
 
+[![NPM downloads](https://img.shields.io/npm/dm/knex-model.svg?style=flat)](https://npmjs.com/package/knex-model)
+[![Dependencies](https://david-dm.org/ruanmartinelli/knex-model.svg)](https://david-dm.org/ruanmartinelli/knex-model)
+
 > A wrapper around the Knex library using ES6 classes.
 
 ## Description
@@ -17,9 +20,14 @@ npm i --save @ruanmartinelli/knex-model
 yarn add @ruanmartinelli/knex-model
 ```
 
+## Roadmap
+
+- [ ] Default `$limit` and `$offset` attributes in filter of `.find()` method
+- [ ] _camelCase_ & _snake_case_ support
+
 ## Usage
 
-Assuming you already have Knex configured, it's fairly simple to setup everything up:
+Assuming you already have Knex configured, it's fairly simple to set everything up:
 
 ```js
 import conn from './database' // Your knex connection
