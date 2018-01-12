@@ -1,6 +1,6 @@
 # :package: knex-model
 
-[![NPM downloads](https://img.shields.io/npm/dm/knex-model.svg?style=flat)](https://npmjs.com/package/knex-model)
+[![NPM downloads](https://img.shields.io/npm/dm/@ruanmartinelli/knex-model.svg?style=flat)](https://npmjs.com/package/@ruanmartinelli/knex-model)
 [![Dependencies](https://david-dm.org/ruanmartinelli/knex-model.svg)](https://david-dm.org/ruanmartinelli/knex-model)
 
 > A wrapper around the Knex library using ES6 classes.
