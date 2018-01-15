@@ -24,6 +24,7 @@ yarn add @ruanmartinelli/knex-model
 
 - [ ] Default `$limit` and `$offset` attributes in filter of `.find()` method
 - [ ] _camelCase_ & _snake_case_ support
+- [ ] Remove `update`, `insert` and `upsert` methods on views (`isView` option?)
 
 ## Usage
 
